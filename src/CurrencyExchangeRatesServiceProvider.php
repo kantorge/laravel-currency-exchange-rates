@@ -17,9 +17,6 @@ class CurrencyExchangeRatesServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-currency-exchange-rates')
-            ->hasConfigFile()
-            ->hasViews()
-            ->hasMigration('create_laravel-currency-exchange-rates_table')
-            ->hasCommand(CurrencyExchangeRatesCommand::class);
+            ->hasConfigFile();
     }
 }
