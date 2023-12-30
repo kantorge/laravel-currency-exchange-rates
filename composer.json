@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "kantorge/laravel-currency-exchange-rates",
+    "description": "A Laravel package to retrieve historical currency exchange rate data",
     "keywords": [
-        ":vendor_name",
+        "kantorge",
         "laravel",
-        ":package_slug"
+        "laravel-currency-exchange-rates"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/kantorge/laravel-currency-exchange-rates",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Gergely Kántor",
+            "email": "kantorge@gmail.com",
             "role": "Developer"
         }
     ],
@@ -35,19 +35,19 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Kantorge\\CurrencyExchangeRates\\": "src/",
+            "Kantorge\\CurrencyExchangeRates\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Kantorge\\CurrencyExchangeRates\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
         "post-autoload-dump": "@composer run prepare",
-        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "clear": "@php vendor/bin/testbench package:purge-laravel-currency-exchange-rates --ansi",
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "build": [
             "@composer run prepare",
@@ -73,10 +73,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Kantorge\\CurrencyExchangeRates\\CurrencyExchangeRatesServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "CurrencyExchangeRates": "Kantorge\\CurrencyExchangeRates\\Facades\\CurrencyExchangeRates"
             }
         }
     },

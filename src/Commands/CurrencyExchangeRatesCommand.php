@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Kantorge\CurrencyExchangeRates\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class CurrencyExchangeRatesCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'laravel-currency-exchange-rates';
 
     public $description = 'My command';
 
