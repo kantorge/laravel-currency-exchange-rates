@@ -2,7 +2,6 @@
 
 namespace Kantorge\CurrencyExchangeRates;
 
-use Kantorge\CurrencyExchangeRates\Commands\CurrencyExchangeRatesCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
