@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Config;
 class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApiClientInterface
 {
     protected string $baseUrl = 'https://api.frankfurter.app';
+
     public const IDENTIFIER = 'frankfurter';
 
     public function getTimeSeries($startDate, $endDate, $baseCurrency, array $currencies)
@@ -29,10 +30,11 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
                 'from' => $baseCurrency,
                 'to' => implode(',', $currencies),
             ];
+
             return $this->makeApiRequest(
                 sprintf('/timeseries/%s..%s', $startDate->format('Y-m-d'), $endDate->format('Y-m-d')),
                 $params
-                )['rates'];
+            )['rates'];
         });
     }
 
@@ -43,6 +45,7 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
 
         return Cache::remember($cacheKey, Config::get('currency-exchange-rates.frankfurter.cache_ttl'), function () {
             $data = $this->makeApiRequest('/currencies');
+
             return array_keys($data);
         });
     }

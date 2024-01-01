@@ -2,8 +2,8 @@
 
 namespace Kantorge\CurrencyExchangeRates\Tests;
 
-use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 use Carbon\Carbon;
+use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 
 class MockApiClientTest extends TestCase
 {

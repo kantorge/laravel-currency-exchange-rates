@@ -11,16 +11,13 @@ interface ExchangeRateApiClientInterface
     /**
      * Get an array of currencies, that is supported by the given API. It returns an array of currency ISO codes.
      * For example: ['USD', 'EUR', 'GBP']
-     *
-     * @return array
      */
     public function getSupportedCurrencies(): array;
 
     /**
      * Check if the given currency is supported by the API.
      *
-     * @param string $currency Currency ISO code to check against the API
-     * @return bool
+     * @param  string  $currency Currency ISO code to check against the API
      */
     public function isCurrencySupported(string $currency): bool;
 }

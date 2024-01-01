@@ -2,9 +2,9 @@
 
 namespace Kantorge\CurrencyExchangeRates\Tests;
 
-use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Http;
+use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 
 class FrankfurterApiClientTest extends TestCase
 {
