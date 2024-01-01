@@ -2,20 +2,13 @@
 
 namespace Kantorge\CurrencyExchangeRates;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Kantorge\CurrencyExchangeRates\ApiClients\ExchangeRateApiClientInterface;
+use \Illuminate\Support\ServiceProvider;
 
-class CurrencyExchangeRatesServiceProvider extends PackageServiceProvider
+class CurrencyExchangeRatesServiceProvider extends ServiceProvider
 {
-    public function configurePackage(Package $package): void
+    public function register()
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
-        $package
-            ->name('laravel-currency-exchange-rates')
-            ->hasConfigFile();
+        $this->mergeConfigFrom(__DIR__ . '/../config/currency-exchange-rates.php', 'currency-exchange-rates');
     }
 }
