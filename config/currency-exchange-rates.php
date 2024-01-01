@@ -11,7 +11,13 @@ return [
      */
     'default_provider' => 'frankfurter',
 
+    /**
+     * Settings for the Frankfurter API client.
+     */
     'frankfurter' => [
-        'cache_ttl' => 60, // in minutes
+        /**
+         * Cache time-to-live (TTL) in minutes.
+         */
+        'cache_ttl' => 60,
     ],
 ];
