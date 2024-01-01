@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
 {
     protected string $baseUrl = 'http://localhost';
+    public const IDENTIFIER = 'base';
 
     protected function makeApiRequest(string $endpoint, array $params = [])
     {
