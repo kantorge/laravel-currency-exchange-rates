@@ -4,7 +4,6 @@ namespace Kantorge\CurrencyExchangeRates\ApiClients;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 
 abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
@@ -25,7 +24,7 @@ abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
     {
         return sprintf(
             '%s_%s_%s',
-            Config::get('currency-exchange-rates.cache_prefix'),
+            config('currency-exchange-rates.cache_prefix'),
             static::IDENTIFIER,
             $key
         );

@@ -6,6 +6,11 @@ return [
      */
     'cache_prefix' => 'currency-exchange-rates',
 
+    /**
+     * Default provider to use for fetching exchange rates.
+     */
+    'default_provider' => 'frankfurter',
+
     'frankfurter' => [
         'cache_ttl' => 60, // in minutes
     ],

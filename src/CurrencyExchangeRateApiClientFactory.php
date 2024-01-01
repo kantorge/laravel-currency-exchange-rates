@@ -8,8 +8,12 @@ use Kantorge\CurrencyExchangeRates\ApiClients\MockApiClient;
 
 class CurrencyExchangeRateApiClientFactory
 {
-    public static function create(string $type): ExchangeRateApiClientInterface
+    public static function create(string $type = null): ExchangeRateApiClientInterface
     {
+        if ($type === null) {
+            $type = config('currency-exchange-rates.default_provider');
+        }
+
         switch ($type) {
             case FrankfurterApiClient::IDENTIFIER:
                 return new FrankfurterApiClient();

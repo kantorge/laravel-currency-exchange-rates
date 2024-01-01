@@ -3,7 +3,6 @@
 namespace Kantorge\CurrencyExchangeRates\ApiClients;
 
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Config;
 
 class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApiClientInterface
 {
@@ -25,7 +24,7 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
         ));
 
         // Get data from the API
-        $data = Cache::remember($cacheKey, Config::get('currency-exchange-rates.frankfurter.cache_ttl'), function () use ($startDate, $endDate, $baseCurrency, $currencies) {
+        $data = Cache::remember($cacheKey, config('currency-exchange-rates.frankfurter.cache_ttl'), function () use ($startDate, $endDate, $baseCurrency, $currencies) {
             $params = [
                 'from' => $baseCurrency,
                 'to' => implode(',', $currencies),
@@ -43,7 +42,7 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
         // Create a cache key
         $cacheKey = $this->getCacheKey('supported_currencies');
 
-        return Cache::remember($cacheKey, Config::get('currency-exchange-rates.frankfurter.cache_ttl'), function () {
+        return Cache::remember($cacheKey, config('currency-exchange-rates.frankfurter.cache_ttl'), function () {
             $data = $this->makeApiRequest('/currencies');
 
             return array_keys($data);
