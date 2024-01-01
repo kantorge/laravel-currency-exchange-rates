@@ -15,7 +15,7 @@ class CurrencyExchangeRateApiClientFactory
      * @return ExchangeRateApiClientInterface The created instance of the Currency Exchange Rates.
      * @throws \Exception If an invalid client type is specified.
      */
-    public static function create(string $type = null): ExchangeRateApiClientInterface
+    public static function create(?string $type = null): ExchangeRateApiClientInterface
     {
         if ($type === null) {
             $type = config('currency-exchange-rates.default_provider');
