@@ -35,6 +35,8 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
                 $params
             )['rates'];
         });
+
+        return $data;
     }
 
     public function getSupportedCurrencies(): array
