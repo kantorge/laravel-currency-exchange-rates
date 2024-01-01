@@ -8,7 +8,7 @@ use Kantorge\CurrencyExchangeRates\ApiClients\MockApiClient;
 
 class CurrencyExchangeRateApiClientFactory
 {
-    public static function create(string $type = null): ExchangeRateApiClientInterface
+    public static function create(?string $type = null): ExchangeRateApiClientInterface
     {
         if ($type === null) {
             $type = config('currency-exchange-rates.default_provider');
