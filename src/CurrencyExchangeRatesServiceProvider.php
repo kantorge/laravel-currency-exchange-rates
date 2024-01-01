@@ -3,7 +3,7 @@
 namespace Kantorge\CurrencyExchangeRates;
 
 use Illuminate\Support\ServiceProvider;
-use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory As CurrencyExchangeRates;
+use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory as CurrencyExchangeRates;
 
 class CurrencyExchangeRatesServiceProvider extends ServiceProvider
 {
