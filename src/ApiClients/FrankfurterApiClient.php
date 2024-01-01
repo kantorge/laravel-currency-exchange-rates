@@ -31,7 +31,7 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
             ];
 
             return $this->makeApiRequest(
-                sprintf('/timeseries/%s..%s', $startDate->format('Y-m-d'), $endDate->format('Y-m-d')),
+                sprintf('/%s..%s', $startDate->format('Y-m-d'), $endDate->format('Y-m-d')),
                 $params
             )['rates'];
         });
