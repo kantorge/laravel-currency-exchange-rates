@@ -26,15 +26,16 @@ php artisan vendor:publish --tag="laravel-currency-exchange-rates-config"
 
 ## Usage
 
+Get a new instance of the CurrencyExchangeRates class with the default source, as defined in the config file.
 ```php
-// Get a new instance of the CurrencyExchangeRates class with the default source, as defined in the config file
-$currencyExchangeRates = new Kantorge\CurrencyExchangeRates();
+use Kantorge\CurrencyExchangeRates\Facades\CurrencyExchangeRates;
+$currencyApi = CurrencyExchangeRates::create();
 ```
 
 View the list of available currencies
 ```php
 // [ 'EUR', 'USD', 'GBP', ...]
-$currencyExchangeRates->getCurrencies();
+$currencyApi->getCurrencies();
 ```
 
 Get the exchange rate for a specific date range, with a specific base currency and target currencies
@@ -45,7 +46,7 @@ Get the exchange rate for a specific date range, with a specific base currency a
 //         'USD' => 1.23,
 //     ],
 // ]
-$currencyExchangeRates->getTimeSeries(
+$currencyApi->getTimeSeries(
     new Carbon('2021-01-01'),
     new Carbon('2021-01-01'),
     'HUF',
