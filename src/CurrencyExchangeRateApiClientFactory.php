@@ -11,7 +11,7 @@ class CurrencyExchangeRateApiClientFactory
     /**
      * Creates an instance of the Currency Exchange Rates based on the specified type.
      *
-     * @param  string|null  $type The type of the client to create. If null, the default provider from the configuration will be used.
+     * @param  string|null  $type  The type of the client to create. If null, the default provider from the configuration will be used.
      * @return ExchangeRateApiClientInterface The created instance of the Currency Exchange Rates.
      *
      * @throws \Exception If an invalid client type is specified.

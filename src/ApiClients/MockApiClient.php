@@ -15,8 +15,8 @@ class MockApiClient extends BaseCurrencyClient implements ExchangeRateApiClientI
 
         // Filter the data for the given start and end dates
         $data = array_filter($data, function ($date) use ($startDate, $endDate) {
-                return $date >= $startDate->format('Y-m-d') && $date <= $endDate->format('Y-m-d');
-            },
+            return $date >= $startDate->format('Y-m-d') && $date <= $endDate->format('Y-m-d');
+        },
             ARRAY_FILTER_USE_KEY
         );
 

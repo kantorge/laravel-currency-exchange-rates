@@ -17,7 +17,7 @@ interface ExchangeRateApiClientInterface
     /**
      * Check if the given currency is supported by the API.
      *
-     * @param  string  $currency Currency ISO code to check against the API
+     * @param  string  $currency  Currency ISO code to check against the API
      */
     public function isCurrencySupported(string $currency): bool;
 }
