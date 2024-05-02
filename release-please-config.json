@@ -1,8 +1,7 @@
 {
     "packages": {
         ".": {
-            "release-type": "php",
-            "package-name": "kantorge/laravel-currency-exchange-rates"
+            "release-type": "php"
         }
     },
     "commit-search-depth": 100,
