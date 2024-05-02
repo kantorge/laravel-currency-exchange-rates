@@ -7,7 +7,7 @@
 
 This package can be used to retrieve historical currency exchange rate data from various sources. The main purpose is to provide a unified interface to retrieve data from different sources. Currently, the following sources are supported:
 
-* Frankfurter: https://www.frankfurter.app/docs/
+* Frankfurter: <https://www.frankfurter.app/docs/>
 * Mock: A mock source that can be used for testing purposes
 
 ## Installation
@@ -74,8 +74,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [kantorge](https://github.com/kantorge)
-- [All Contributors](../../contributors)
+* [kantorge](https://github.com/kantorge)
+* [All Contributors](../../contributors)
 
 ## License
 

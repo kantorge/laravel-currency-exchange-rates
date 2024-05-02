@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 
 abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
 {
+
     protected string $baseUrl = 'http://localhost';
 
     public const IDENTIFIER = 'base';
@@ -19,6 +20,8 @@ abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
 
     /**
      * Get a full cache key for the given key, accounting for the cache prefix and the API identifier.
+     * @param string $key
+     * @return string
      */
     protected function getCacheKey(string $key): string
     {
