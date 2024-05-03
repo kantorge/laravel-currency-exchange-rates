@@ -20,6 +20,7 @@ class BaseApiClientTest extends TestCase
             ['EUR', 'HUF']
         );
 
+        // Test invalid start/end date combination
         $this->expectException(\InvalidArgumentException::class);
         $client->getTimeSeries(
             new Carbon('today'),
@@ -46,6 +47,7 @@ class BaseApiClientTest extends TestCase
             ['EUR', 'HUF']
         );
 
+        // Test the base currency being in the list of target currencies
         $this->expectException(\InvalidArgumentException::class);
         $client->getTimeSeries(
             new Carbon('today'),
