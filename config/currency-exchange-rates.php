@@ -15,7 +15,7 @@ return [
      * Settings for the Frankfurter API client.
      */
     'frankfurter' => [
-         /*
+        /*
           * Cache time-to-live (TTL) in minutes.
           */
         'cache_ttl' => 60,
