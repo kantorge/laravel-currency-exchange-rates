@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/kantorge/laravel-currency-exchange-rates/compare/v0.0.5...v0.0.6) (2025-02-08)
+
+
+### 🐛 Bug Fixes
+
+* exclude potentional .env files from Git content ([0bc8b1f](https://github.com/kantorge/laravel-currency-exchange-rates/commit/0bc8b1f054380c588a782f452f9a1f02d6796161))
+
 ## [0.0.5](https://github.com/kantorge/laravel-currency-exchange-rates/compare/v0.0.4...v0.0.5) (2024-05-02)
 
 
