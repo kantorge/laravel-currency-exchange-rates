@@ -3,6 +3,7 @@
 namespace Kantorge\CurrencyExchangeRates;
 
 use Kantorge\CurrencyExchangeRates\ApiClients\ExchangeRateApiClientInterface;
+use Kantorge\CurrencyExchangeRates\ApiClients\ExchangeRateApiOpenClient;
 use Kantorge\CurrencyExchangeRates\ApiClients\FrankfurterApiClient;
 use Kantorge\CurrencyExchangeRates\ApiClients\MockApiClient;
 
@@ -25,6 +26,8 @@ class CurrencyExchangeRateApiClientFactory
         switch ($type) {
             case FrankfurterApiClient::IDENTIFIER:
                 return new FrankfurterApiClient();
+            case ExchangeRateApiOpenClient::IDENTIFIER:
+                return new ExchangeRateApiOpenClient();
             case MockApiClient::IDENTIFIER:
                 return new MockApiClient();
             default:

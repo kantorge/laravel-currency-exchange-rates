@@ -20,4 +20,14 @@ return [
           */
         'cache_ttl' => 60,
     ],
+
+    /*
+     * Settings for the ExchangeRate-API Open client.
+     */
+    'exchangerate-api-open' => [
+        /*
+          * Cache time-to-live (TTL) in minutes.
+          */
+        'cache_ttl' => 60,
+    ],
 ];
