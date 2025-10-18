@@ -67,6 +67,25 @@ composer install --no-interaction --prefer-source
 
 **Expected Install Time**: 2-5 minutes (longer if falling back to source downloads)
 
+**What CI Does** (from run-tests.yml workflow):
+```bash
+# CI installs specific versions to test against a matrix
+composer require "laravel/framework:10.*" "orchestra/testbench:8.*" "nesbot/carbon:^2.63" --no-interaction --no-update
+composer update --prefer-stable --prefer-dist --no-interaction
+```
+For normal development, just use `composer install` as shown above.
+
+**Verifying Successful Installation**:
+```bash
+# Check that vendor/bin exists with tools
+ls vendor/bin/
+# Should show: pest, pint, phpstan, testbench, etc.
+
+# Verify autoload is working
+composer dump-autoload
+# Should complete without errors
+```
+
 ### Running Tests
 
 ```bash
@@ -271,20 +290,29 @@ workbench/
 ## Troubleshooting
 
 **Composer Install Fails with GitHub Auth Error**:
-- Expected behavior in environments without GitHub token
-- Solution: Wait for fallback to source downloads (takes longer but works)
-- Alternative: Use `composer install --prefer-source` to skip dist downloads
+- **Expected behavior** in environments without GitHub token
+- Error: "Could not authenticate against github.com"
+- **Solution**: Composer will automatically retry with source downloads - wait for it to complete
+- **Alternative**: Use `composer install --prefer-source --no-interaction` to skip dist downloads entirely
+- **Workaround if stuck**: Try `composer install --no-scripts --no-interaction` to skip post-install hooks, then run `composer dump-autoload` manually
+- **Note**: Even if some packages fail to download, basic functionality may still work if core dependencies installed
 
 **Tests Fail with "Class not found"**:
 - Run `composer dump-autoload` to regenerate autoload files
 - Ensure `composer install` completed successfully
+- Check that `vendor/bin/` directory exists and contains `pest` binary
 
 **PHPStan Errors**:
 - Check `phpstan-baseline.neon` (currently empty - no suppressed errors)
 - Level is set to 5 (moderate strictness)
 - Paths analyzed: `src/` and `config/`
+- Temporary dir: `build/phpstan` (auto-created)
 
 **Pint Changes Not Applied**:
 - Pint runs automatically in CI after push
 - Run locally with `composer format` before push to see changes
 - No Pint config file = uses Laravel Pint defaults
+
+**Build Directory Issues**:
+- The `build/` directory is gitignored and created automatically for coverage and PHPStan temp files
+- If you see permission errors, ensure the directory is writable: `mkdir -p build && chmod 755 build`
