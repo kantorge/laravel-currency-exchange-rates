@@ -33,10 +33,19 @@ use Kantorge\CurrencyExchangeRates\Facades\CurrencyExchangeRates;
 $currencyApi = CurrencyExchangeRates::create();
 ```
 
+Or specify a specific provider:
+```php
+// Use Frankfurter
+$currencyApi = CurrencyExchangeRates::create('frankfurter');
+
+// Use ExchangeRate-API Open
+$currencyApi = CurrencyExchangeRates::create('exchangerate-api-open');
+```
+
 View the list of available currencies
 ```php
 // [ 'EUR', 'USD', 'GBP', ...]
-$currencyApi->getCurrencies();
+$currencyApi->getSupportedCurrencies();
 ```
 
 Get the exchange rate for a specific date range, with a specific base currency and target currencies
