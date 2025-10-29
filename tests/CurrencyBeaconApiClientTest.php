@@ -18,7 +18,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         Config::set('currency-exchange-rates.currencybeacon.api_key', 'test_api_key_12345');
     }
 
-    public function testGetSupportedCurrencies()
+    public function test_get_supported_currencies()
     {
         $expectedResponse = [
             'response' => [
@@ -52,7 +52,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         Http::assertSentCount(1);
     }
 
-    public function testGetTimeSeries()
+    public function test_get_time_series()
     {
         $expectedResponse = [
             'response' => [
@@ -110,7 +110,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         Http::assertSentCount(1);
     }
 
-    public function testMissingApiKeyThrowsException()
+    public function test_missing_api_key_throws_exception()
     {
         Config::set('currency-exchange-rates.currencybeacon.api_key', null);
 
@@ -122,7 +122,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $client->getSupportedCurrencies();
     }
 
-    public function testInvalidApiKeyThrowsException()
+    public function test_invalid_api_key_throws_exception()
     {
         Config::set('currency-exchange-rates.currencybeacon.api_key', 'invalid_key');
 
@@ -143,7 +143,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $client->getSupportedCurrencies();
     }
 
-    public function testApiErrorResponseThrowsException()
+    public function test_api_error_response_throws_exception()
     {
         Http::fake([
             'api.currencybeacon.com/v1/currencies*' => Http::response(
@@ -162,7 +162,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $client->getSupportedCurrencies();
     }
 
-    public function testVerifyBaseCurrency()
+    public function test_verify_base_currency()
     {
         $expectedResponse = [
             'response' => [
@@ -191,7 +191,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         );
     }
 
-    public function testVerifyCurrencies()
+    public function test_verify_currencies()
     {
         $expectedResponse = [
             'response' => [
@@ -220,7 +220,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         );
     }
 
-    public function testIsCurrencySupported()
+    public function test_is_currency_supported()
     {
         $expectedResponse = [
             'response' => [

@@ -25,11 +25,11 @@ class CurrencyExchangeRateApiClientFactory
 
         switch ($type) {
             case FrankfurterApiClient::IDENTIFIER:
-                return new FrankfurterApiClient();
+                return new FrankfurterApiClient;
             case CurrencyBeaconApiClient::IDENTIFIER:
-                return new CurrencyBeaconApiClient();
+                return new CurrencyBeaconApiClient;
             case MockApiClient::IDENTIFIER:
-                return new MockApiClient();
+                return new MockApiClient;
             default:
                 throw new \Exception("Invalid client type: $type");
         }

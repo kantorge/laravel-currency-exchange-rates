@@ -12,7 +12,7 @@ class CurrencyExchangeRatesServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/currency-exchange-rates.php', 'currency-exchange-rates');
 
         $this->app->bind('currency-exchange-rates', function () {
-            return new CurrencyExchangeRates();
+            return new CurrencyExchangeRates;
         });
     }
 

@@ -8,7 +8,7 @@ use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 
 class FrankfurterApiClientTest extends TestCase
 {
-    public function testGetSupportedCurrencies()
+    public function test_get_supported_currencies()
     {
         $expectedCurrencies = [
             'USD' => 'United States Dollar',

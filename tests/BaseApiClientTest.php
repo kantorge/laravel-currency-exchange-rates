@@ -7,7 +7,7 @@ use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 
 class BaseApiClientTest extends TestCase
 {
-    public function testTimeseriesThrowsExceptionForInvalidArguments()
+    public function test_timeseries_throws_exception_for_invalid_arguments()
     {
         $client = CurrencyExchangeRateApiClientFactory::create('mock');
 
@@ -75,7 +75,7 @@ class BaseApiClientTest extends TestCase
         );
     }
 
-    public function testDefaultProviderIsLoaded()
+    public function test_default_provider_is_loaded()
     {
         $client = CurrencyExchangeRateApiClientFactory::create();
 
