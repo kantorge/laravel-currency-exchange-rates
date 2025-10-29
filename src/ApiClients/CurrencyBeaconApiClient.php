@@ -28,7 +28,7 @@ class CurrencyBeaconApiClient extends BaseCurrencyClient implements ExchangeRate
         $params['api_key'] = $apiKey;
 
         try {
-            $response = Http::get($this->baseUrl.$endpoint, $params)->throw();
+            $response = Http::get($this->baseUrl . $endpoint, $params)->throw();
 
             // Check if the response contains an error
             $data = $response->json();

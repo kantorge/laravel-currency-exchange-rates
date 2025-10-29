@@ -7,9 +7,9 @@
 
 This package can be used to retrieve historical currency exchange rate data from various sources. The main purpose is to provide a unified interface to retrieve data from different sources. Currently, the following sources are supported:
 
-* Frankfurter: <https://www.frankfurter.app/docs/>
-* CurrencyBeacon: <https://currencybeacon.com/> (requires free API key)
-* Mock: A mock source that can be used for testing purposes
+-   [Frankfurter](https://www.frankfurter.app/docs/)
+-   [CurrencyBeacon](https://currencybeacon.com/) (requires free API key)
+-   A mock source that can be used for testing purposes
 
 ## Installation
 
@@ -52,18 +52,21 @@ $currencyApi = CurrencyExchangeRates::create('currencybeacon');
 ## Usage
 
 Get a new instance of the CurrencyExchangeRates class with the default source, as defined in the config file.
+
 ```php
 use Kantorge\CurrencyExchangeRates\Facades\CurrencyExchangeRates;
 $currencyApi = CurrencyExchangeRates::create();
 ```
 
 View the list of available currencies
+
 ```php
 // [ 'EUR', 'USD', 'GBP', ...]
-$currencyApi->getCurrencies();
+$currencyApi->getSupportedCurrencies();
 ```
 
 Get the exchange rate for a specific date range, with a specific base currency and target currencies
+
 ```php
 // [
 //     '2021-01-01' => [
@@ -96,11 +99,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Security Vulnerabilities
 
 Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-* [kantorge](https://github.com/kantorge)
-* [All Contributors](../../contributors)
 
 ## License
 

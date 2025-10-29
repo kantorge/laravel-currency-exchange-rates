@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Cache;
 
 class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApiClientInterface
 {
-    protected string $baseUrl = 'https://api.frankfurter.app';
+    protected string $baseUrl = 'https://api.frankfurter.dev/v1';
 
     public const IDENTIFIER = 'frankfurter';
 
@@ -26,8 +26,8 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
         // Get data from the API
         $data = Cache::remember($cacheKey, config('currency-exchange-rates.frankfurter.cache_ttl'), function () use ($startDate, $endDate, $baseCurrency, $currencies) {
             $params = [
-                'from' => $baseCurrency,
-                'to' => implode(',', $currencies),
+                'base' => $baseCurrency,
+                'symbols' => implode(',', $currencies),
             ];
 
             return $this->makeApiRequest(

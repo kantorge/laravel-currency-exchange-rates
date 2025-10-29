@@ -4,6 +4,7 @@ namespace Kantorge\CurrencyExchangeRates\Tests;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Kantorge\CurrencyExchangeRates\ApiClients\FrankfurterApiClient;
 use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 
 class FrankfurterApiClientTest extends TestCase
@@ -16,15 +17,16 @@ class FrankfurterApiClientTest extends TestCase
             'HUF' => 'Hungarian Forint',
         ];
 
+        $client = CurrencyExchangeRateApiClientFactory::create('frankfurter');
+        $baseUrl = $client->getBaseUrl();
+
         Http::fake([
-            'api.frankfurter.app/currencies' => Http::response(
+            $baseUrl . '/currencies' => Http::response(
                 $expectedCurrencies,
                 200,
                 []
             ),
         ]);
-
-        $client = CurrencyExchangeRateApiClientFactory::create('frankfurter');
 
         // Clear the cache before the test runs
         Cache::forget($client->clearCacheForKey('supported_currencies'));
