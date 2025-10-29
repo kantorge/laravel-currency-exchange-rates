@@ -8,6 +8,7 @@
 This package can be used to retrieve historical currency exchange rate data from various sources. The main purpose is to provide a unified interface to retrieve data from different sources. Currently, the following sources are supported:
 
 * Frankfurter: <https://www.frankfurter.app/docs/>
+* CurrencyBeacon: <https://currencybeacon.com/> (requires free API key)
 * Mock: A mock source that can be used for testing purposes
 
 ## Installation
@@ -22,6 +23,30 @@ You can publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="laravel-currency-exchange-rates-config"
+```
+
+## Configuration
+
+### Using CurrencyBeacon
+
+CurrencyBeacon requires an API key. You can get a free API key at <https://currencybeacon.com/>.
+
+Add your API key to your `.env` file:
+
+```env
+CURRENCY_BEACON_API_KEY=your_api_key_here
+```
+
+To use CurrencyBeacon as your default provider, set it in the published config file:
+
+```php
+'default_provider' => 'currencybeacon',
+```
+
+Or specify it when creating the client:
+
+```php
+$currencyApi = CurrencyExchangeRates::create('currencybeacon');
 ```
 
 ## Usage
