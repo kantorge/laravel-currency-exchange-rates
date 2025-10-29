@@ -117,7 +117,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $client = CurrencyExchangeRateApiClientFactory::create('currencybeacon');
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('CurrencyBeacon API key is not configured');
+        $this->expectExceptionMessage('CurrencyBeacon API key is not configured. Please set CURRENCY_BEACON_API_KEY in your .env file.');
 
         $client->getSupportedCurrencies();
     }
@@ -138,7 +138,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $client->clearCacheForKey('supported_currencies');
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('CurrencyBeacon API key is invalid');
+        $this->expectExceptionMessage('CurrencyBeacon API key is invalid. Please check your CURRENCY_BEACON_API_KEY in your .env file.');
 
         $client->getSupportedCurrencies();
     }
