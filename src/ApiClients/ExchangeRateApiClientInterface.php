@@ -37,8 +37,7 @@ interface ExchangeRateApiClientInterface
      * This method removes cached exchange rate data associated with the given key,
      * forcing fresh data to be fetched on the next request for that key.
      *
-     * @param string $key The cache key to clear
-     * @return void
+     * @param  string  $key  The cache key to clear
      */
     public function clearCacheForKey(string $key): void;
 }
