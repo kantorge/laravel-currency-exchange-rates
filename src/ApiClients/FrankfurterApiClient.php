@@ -15,12 +15,14 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
         $this->verifyTimeSeriesArguments($startDate, $endDate, $baseCurrency, $currencies);
 
         // Create a cache key
+        $sortedCurrencies = $currencies;
+        sort($sortedCurrencies);
         $cacheKey = $this->getCacheKey(sprintf(
             'time_series_%s_%s_%s_%s',
             $startDate->format('Y-m-d'),
             $endDate->format('Y-m-d'),
             $baseCurrency,
-            implode('_', $currencies)
+            implode('_', $sortedCurrencies)
         ));
 
         // Get data from the API

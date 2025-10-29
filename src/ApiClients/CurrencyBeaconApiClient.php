@@ -56,12 +56,14 @@ class CurrencyBeaconApiClient extends BaseCurrencyClient implements ExchangeRate
         $this->verifyTimeSeriesArguments($startDate, $endDate, $baseCurrency, $currencies);
 
         // Create a cache key
+        $sortedCurrencies = $currencies;
+        sort($sortedCurrencies);
         $cacheKey = $this->getCacheKey(sprintf(
             'time_series_%s_%s_%s_%s',
             $startDate->format('Y-m-d'),
             $endDate->format('Y-m-d'),
             $baseCurrency,
-            implode('_', $currencies)
+            implode('_', $sortedCurrencies)
         ));
 
         // Get data from the API
@@ -78,16 +80,7 @@ class CurrencyBeaconApiClient extends BaseCurrencyClient implements ExchangeRate
             // Transform the response to match the expected format
             // CurrencyBeacon returns: { "response": [ { "date": "2021-01-01", "rates": { "EUR": 0.9 } } ] }
             // We need: { "2021-01-01": { "EUR": 0.9 } }
-            $transformedData = [];
-            if (isset($response['response']) && is_array($response['response'])) {
-                foreach ($response['response'] as $entry) {
-                    if (isset($entry['date']) && isset($entry['rates'])) {
-                        $transformedData[$entry['date']] = $entry['rates'];
-                    }
-                }
-            }
-
-            return $transformedData;
+            return array_column($response['response'] ?? [], 'rates', 'date');
         });
 
         return $data;
@@ -107,16 +100,7 @@ class CurrencyBeaconApiClient extends BaseCurrencyClient implements ExchangeRate
 
             // Extract currency codes from the response
             // CurrencyBeacon returns: { "response": [ { "short_code": "USD", "name": "US Dollar" }, ... ] }
-            $currencies = [];
-            if (isset($data['response']) && is_array($data['response'])) {
-                foreach ($data['response'] as $currency) {
-                    if (isset($currency['short_code'])) {
-                        $currencies[] = $currency['short_code'];
-                    }
-                }
-            }
-
-            return $currencies;
+            return array_column($data['response'] ?? [], 'short_code');
         });
     }
 }
