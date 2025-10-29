@@ -37,7 +37,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $baseUrl = $client->getBaseUrl();
 
         Http::fake([
-            $baseUrl . '/currencies*' => Http::response(
+            $baseUrl.'/currencies*' => Http::response(
                 $expectedCurrencies,
                 200,
                 []
@@ -82,8 +82,8 @@ class CurrencyBeaconApiClientTest extends TestCase
         $baseUrl = $client->getBaseUrl();
 
         Http::fake([
-            $baseUrl . '/timeseries*' => Http::response($expectedResponse, 200, []),
-            $baseUrl . '/currencies*' => Http::response([
+            $baseUrl.'/timeseries*' => Http::response($expectedResponse, 200, []),
+            $baseUrl.'/currencies*' => Http::response([
                 'response' => [
                     ['short_code' => 'USD', 'name' => 'United States Dollar'],
                     ['short_code' => 'EUR', 'name' => 'Euro'],
@@ -140,7 +140,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $baseUrl = $client->getBaseUrl();
 
         Http::fake([
-            $baseUrl . '/currencies*' => Http::response(
+            $baseUrl.'/currencies*' => Http::response(
                 ['error' => true, 'message' => 'Invalid API key'],
                 401,
                 []
@@ -161,7 +161,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $baseUrl = $client->getBaseUrl();
 
         Http::fake([
-            $baseUrl . '/currencies*' => Http::response(
+            $baseUrl.'/currencies*' => Http::response(
                 ['error' => true, 'message' => 'Rate limit exceeded'],
                 200,
                 []
@@ -190,8 +190,8 @@ class CurrencyBeaconApiClientTest extends TestCase
         $baseUrl = $client->getBaseUrl();
 
         Http::fake([
-            $baseUrl . '/currencies*' => Http::response($expectedResponse, 200),
-            $baseUrl . '/timeseries*' => Http::response(['response' => []], 200),
+            $baseUrl.'/currencies*' => Http::response($expectedResponse, 200),
+            $baseUrl.'/timeseries*' => Http::response(['response' => []], 200),
         ]);
 
         $client->clearCacheForKey('supported_currencies');
@@ -221,8 +221,8 @@ class CurrencyBeaconApiClientTest extends TestCase
         $baseUrl = $client->getBaseUrl();
 
         Http::fake([
-            $baseUrl . '/currencies*' => Http::response($expectedResponse, 200),
-            $baseUrl . '/timeseries*' => Http::response(['response' => []], 200),
+            $baseUrl.'/currencies*' => Http::response($expectedResponse, 200),
+            $baseUrl.'/timeseries*' => Http::response(['response' => []], 200),
         ]);
 
         $client->clearCacheForKey('supported_currencies');
@@ -252,7 +252,7 @@ class CurrencyBeaconApiClientTest extends TestCase
         $baseUrl = $client->getBaseUrl();
 
         Http::fake([
-            $baseUrl . '/currencies*' => Http::response($expectedResponse, 200),
+            $baseUrl.'/currencies*' => Http::response($expectedResponse, 200),
         ]);
 
         $client->clearCacheForKey('supported_currencies');
