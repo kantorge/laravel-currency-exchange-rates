@@ -4,7 +4,6 @@ namespace Kantorge\CurrencyExchangeRates\Tests;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use Kantorge\CurrencyExchangeRates\ApiClients\FrankfurterApiClient;
 use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 
 class FrankfurterApiClientTest extends TestCase
@@ -21,7 +20,7 @@ class FrankfurterApiClientTest extends TestCase
         $baseUrl = $client->getBaseUrl();
 
         Http::fake([
-            $baseUrl . '/currencies' => Http::response(
+            $baseUrl.'/currencies' => Http::response(
                 $expectedCurrencies,
                 200,
                 []

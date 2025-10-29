@@ -14,7 +14,7 @@ abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
 
     protected function makeApiRequest(string $endpoint, array $params = [])
     {
-        return Http::get($this->baseUrl . $endpoint, $params)->throw()->json();
+        return Http::get($this->baseUrl.$endpoint, $params)->throw()->json();
     }
 
     /**
@@ -48,7 +48,7 @@ abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
      */
     protected function verifyBaseCurrency(string $baseCurrency): void
     {
-        if (!$this->isCurrencySupported($baseCurrency)) {
+        if (! $this->isCurrencySupported($baseCurrency)) {
             throw new \InvalidArgumentException(sprintf(
                 'The base currency "%s" is not supported by the API "%s"',
                 $baseCurrency,
@@ -63,7 +63,7 @@ abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
     protected function verifyCurrencies(array $currencies): void
     {
         foreach ($currencies as $currency) {
-            if (!$this->isCurrencySupported($currency)) {
+            if (! $this->isCurrencySupported($currency)) {
                 throw new \InvalidArgumentException(sprintf(
                     'The currency "%s" is not supported by the API "%s"',
                     $currency,
