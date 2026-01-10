@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.0](https://github.com/kantorge/laravel-currency-exchange-rates/compare/v0.0.6...v1.0.0) (2026-01-10)
+
+### ✨ Features
+
+* Add CurrencyBeacon as new API provider
+
+### 🛠️ Chores
+
+* release 1.0.0 ([a1eb64e](https://github.com/kantorge/laravel-currency-exchange-rates/commit/a1eb64e6885ed77255002d9b2391a9d2028a38be))
+
 ## [0.0.6](https://github.com/kantorge/laravel-currency-exchange-rates/compare/v0.0.5...v0.0.6) (2025-02-08)
 
 
