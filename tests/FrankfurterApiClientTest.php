@@ -8,7 +8,7 @@ use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 
 class FrankfurterApiClientTest extends TestCase
 {
-    public function testGetSupportedCurrencies()
+    public function test_get_supported_currencies()
     {
         $expectedCurrencies = [
             'USD' => 'United States Dollar',
@@ -16,15 +16,16 @@ class FrankfurterApiClientTest extends TestCase
             'HUF' => 'Hungarian Forint',
         ];
 
+        $client = CurrencyExchangeRateApiClientFactory::create('frankfurter');
+        $baseUrl = $client->getBaseUrl();
+
         Http::fake([
-            'api.frankfurter.app/currencies' => Http::response(
+            $baseUrl.'/currencies' => Http::response(
                 $expectedCurrencies,
                 200,
                 []
             ),
         ]);
-
-        $client = CurrencyExchangeRateApiClientFactory::create('frankfurter');
 
         // Clear the cache before the test runs
         Cache::forget($client->clearCacheForKey('supported_currencies'));

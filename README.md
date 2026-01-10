@@ -7,8 +7,9 @@
 
 This package can be used to retrieve historical currency exchange rate data from various sources. The main purpose is to provide a unified interface to retrieve data from different sources. Currently, the following sources are supported:
 
-* Frankfurter: <https://www.frankfurter.app/docs/>
-* Mock: A mock source that can be used for testing purposes
+-   [Frankfurter](https://www.frankfurter.app/docs/)
+-   [CurrencyBeacon](https://currencybeacon.com/) (requires free API key)
+-   A mock source that can be used for testing purposes
 
 ## Installation
 
@@ -24,21 +25,48 @@ You can publish the config file with:
 php artisan vendor:publish --tag="laravel-currency-exchange-rates-config"
 ```
 
+## Configuration
+
+### Using CurrencyBeacon
+
+CurrencyBeacon requires an API key. You can get a free API key at <https://currencybeacon.com/>.
+
+Add your API key to your `.env` file:
+
+```env
+CURRENCY_BEACON_API_KEY=your_api_key_here
+```
+
+To use CurrencyBeacon as your default provider, set it in the published config file:
+
+```php
+'default_provider' => 'currencybeacon',
+```
+
+Or specify it when creating the client:
+
+```php
+$currencyApi = CurrencyExchangeRates::create('currencybeacon');
+```
+
 ## Usage
 
 Get a new instance of the CurrencyExchangeRates class with the default source, as defined in the config file.
+
 ```php
 use Kantorge\CurrencyExchangeRates\Facades\CurrencyExchangeRates;
 $currencyApi = CurrencyExchangeRates::create();
 ```
 
 View the list of available currencies
+
 ```php
 // [ 'EUR', 'USD', 'GBP', ...]
-$currencyApi->getCurrencies();
+$currencyApi->getSupportedCurrencies();
 ```
 
 Get the exchange rate for a specific date range, with a specific base currency and target currencies
+
 ```php
 // [
 //     '2021-01-01' => [
@@ -71,11 +99,6 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 ## Security Vulnerabilities
 
 Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-* [kantorge](https://github.com/kantorge)
-* [All Contributors](../../contributors)
 
 ## License
 

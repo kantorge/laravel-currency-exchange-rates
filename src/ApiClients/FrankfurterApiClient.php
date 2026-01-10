@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Cache;
 
 class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApiClientInterface
 {
-    protected string $baseUrl = 'https://api.frankfurter.app';
+    protected string $baseUrl = 'https://api.frankfurter.dev/v1';
 
     public const IDENTIFIER = 'frankfurter';
 
@@ -15,19 +15,21 @@ class FrankfurterApiClient extends BaseCurrencyClient implements ExchangeRateApi
         $this->verifyTimeSeriesArguments($startDate, $endDate, $baseCurrency, $currencies);
 
         // Create a cache key
+        $sortedCurrencies = $currencies;
+        sort($sortedCurrencies);
         $cacheKey = $this->getCacheKey(sprintf(
             'time_series_%s_%s_%s_%s',
             $startDate->format('Y-m-d'),
             $endDate->format('Y-m-d'),
             $baseCurrency,
-            implode('_', $currencies)
+            implode('_', $sortedCurrencies)
         ));
 
         // Get data from the API
         $data = Cache::remember($cacheKey, config('currency-exchange-rates.frankfurter.cache_ttl'), function () use ($startDate, $endDate, $baseCurrency, $currencies) {
             $params = [
-                'from' => $baseCurrency,
-                'to' => implode(',', $currencies),
+                'base' => $baseCurrency,
+                'symbols' => implode(',', $currencies),
             ];
 
             return $this->makeApiRequest(

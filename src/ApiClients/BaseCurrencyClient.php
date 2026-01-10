@@ -105,4 +105,9 @@ abstract class BaseCurrencyClient implements ExchangeRateApiClientInterface
             throw new \InvalidArgumentException('The base currency cannot be in the list of currencies');
         }
     }
+
+    public function getBaseUrl(): string
+    {
+        return $this->baseUrl;
+    }
 }

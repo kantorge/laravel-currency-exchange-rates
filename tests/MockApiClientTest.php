@@ -7,7 +7,7 @@ use Kantorge\CurrencyExchangeRates\CurrencyExchangeRateApiClientFactory;
 
 class MockApiClientTest extends TestCase
 {
-    public function testGetSupportedCurrencies()
+    public function test_get_supported_currencies()
     {
         $client = CurrencyExchangeRateApiClientFactory::create('mock');
 
@@ -20,7 +20,7 @@ class MockApiClientTest extends TestCase
         $this->assertContains('HUF', $currencies);
     }
 
-    public function testIsCurrencySupported()
+    public function test_is_currency_supported()
     {
         $client = CurrencyExchangeRateApiClientFactory::create('mock');
 
@@ -30,7 +30,7 @@ class MockApiClientTest extends TestCase
         $this->assertFalse($client->isCurrencySupported('GBP'));
     }
 
-    public function testTimeSeriesReturnsExpectedValues()
+    public function test_time_series_returns_expected_values()
     {
         $client = CurrencyExchangeRateApiClientFactory::create('mock');
 
