@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/kantorge/laravel-currency-exchange-rates/compare/v1.0.0...v1.0.1) (2026-04-08)
+
+
+### 🛠️ Chores
+
+* Bump dependabot/fetch-metadata from 2.5.0 to 3.0.0 ([9a8c72c](https://github.com/kantorge/laravel-currency-exchange-rates/commit/9a8c72c6ef44e933dd6521db592acd0611bbb79a))
+
 ## [1.0.0](https://github.com/kantorge/laravel-currency-exchange-rates/compare/v0.0.6...v1.0.0) (2026-01-10)
 
 ### ✨ Features
