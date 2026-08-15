@@ -2,12 +2,12 @@
 
 ## Repository Overview
 
-This is a **Laravel package** that provides a unified interface for retrieving historical currency exchange rate data from various sources. Besides the actual external data sources, there is also a Mock provider for testing. The package is written in **PHP 8.1+** using the **Laravel Framework 10.x** and follows Laravel package development conventions.
+This is a **Laravel package** that provides a unified interface for retrieving historical currency exchange rate data from various sources. Besides the actual external data sources, there is also a Mock provider for testing. The package is written in **PHP 8.2+** using the **Laravel Framework 11.x/12.x** and follows Laravel package development conventions.
 
 **Repository Statistics:**
 
 -   Language: PHP
--   Framework: Laravel 10.x
+-   Framework: Laravel 11.x/12.x
 -   Testing: Pest (PHP testing framework)
 -   Static Analysis: PHPStan (level 5)
 -   Code Style: Laravel Pint
@@ -50,7 +50,7 @@ This is a **Laravel package** that provides a unified interface for retrieving h
 
 ### Prerequisites
 
--   **PHP**: 8.1, 8.2, or 8.3
+-   **PHP**: 8.2 or 8.3
 -   **Composer**: 2.x
 -   **Extensions**: dom, curl, libxml, mbstring, zip, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, fileinfo
 
@@ -74,7 +74,7 @@ composer install --no-interaction --prefer-source
 
 ```bash
 # CI installs specific versions to test against a matrix
-composer require "laravel/framework:10.*" "orchestra/testbench:8.*" "nesbot/carbon:^2.63" --no-interaction --no-update
+composer require "laravel/framework:12.*" "orchestra/testbench:10.*" "nesbot/carbon:^3.0" --no-interaction --no-update
 composer update --prefer-stable --prefer-dist --no-interaction
 ```
 
@@ -153,22 +153,22 @@ The repository has 3 main CI workflows that run on push:
 ### 1. `run-tests.yml` (Tests)
 
 -   **Trigger**: Push to any PHP file, composer.json/lock, phpunit.xml.dist, or workflow file
--   **Matrix**: PHP 8.1/8.2/8.3 × Laravel 10.\* × prefer-stable/prefer-lowest × ubuntu-latest/windows-latest
+-   **Matrix**: PHP 8.2/8.3 × Laravel 11.\*/12.\* × prefer-stable/prefer-lowest × ubuntu-latest/windows-latest
 -   **Timeout**: 5 minutes
 -   **Steps**:
     1. Checkout code
     2. Setup PHP with required extensions
-    3. Install dependencies: `composer require "laravel/framework:10.*" "orchestra/testbench:8.*" "nesbot/carbon:^2.63" --no-interaction --no-update && composer update --prefer-stable --prefer-dist --no-interaction`
+    3. Install dependencies: `composer require "laravel/framework:{11.*|12.*}" "orchestra/testbench:{9.*|10.*}" "nesbot/carbon:{^2.63|^3.0}" --no-interaction --no-update && composer update --prefer-stable --prefer-dist --no-interaction`
     4. Run tests: `vendor/bin/pest --ci`
 
 ### 2. `phpstan.yml` (Static Analysis)
 
 -   **Trigger**: Push to any PHP file, phpstan.neon.dist, or workflow file
--   **PHP Version**: 8.1
+-   **PHP Version**: 8.2
 -   **Timeout**: 5 minutes
 -   **Steps**:
     1. Checkout code
-    2. Setup PHP 8.1
+    2. Setup PHP 8.2
     3. Install dependencies via `ramsey/composer-install` action
     4. Run PHPStan: `./vendor/bin/phpstan --error-format=github`
 
@@ -244,7 +244,7 @@ All API clients use Laravel's Cache facade with TTL from config:
 
 ## Configuration Files
 
--   **composer.json**: Defines PHP 8.1+ requirement, Guzzle 7.8+ dependency, autoloading, scripts
+-   **composer.json**: Defines PHP 8.2+ requirement, Guzzle 7.8+ dependency, autoloading, scripts
 -   **phpunit.xml.dist**: Pest/PHPUnit config (random execution order, strict mode, coverage to `build/`)
 -   **phpstan.neon.dist**: Level 5 static analysis, analyzes `src/` and `config/`
 -   **.editorconfig**: 4 spaces, LF line endings, UTF-8, trim trailing whitespace
