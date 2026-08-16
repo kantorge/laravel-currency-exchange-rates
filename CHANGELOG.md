@@ -1,5 +1,26 @@
 # Changelog
 
+## [2.0.0](https://github.com/kantorge/laravel-currency-exchange-rates/compare/v1.0.1...v2.0.0) (2026-08-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* PHP 8.1 and Laravel 10 are no longer supported. Consumers must upgrade to PHP 8.2+ and Laravel 11 or 12.
+
+### 🛠️ Chores
+
+* bump ramsey/composer-install from 3 to 4 ([#25](https://github.com/kantorge/laravel-currency-exchange-rates/issues/25)) ([55b98a6](https://github.com/kantorge/laravel-currency-exchange-rates/commit/55b98a6bfbbe2e061347e46de804fe1912934ca7))
+
+
+### 📚 Documentation
+
+* add Claude.md ([f8c1a1a](https://github.com/kantorge/laravel-currency-exchange-rates/commit/f8c1a1a756b1bea3106ec34555b1f096dbd748dc))
+
+
+### ✨ Features
+
+* drop Laravel 10 and PHP 8.1 support ([afc689b](https://github.com/kantorge/laravel-currency-exchange-rates/commit/afc689b16a4e0b1e82a90973a47749a051e58738))
+
 ## [1.0.1](https://github.com/kantorge/laravel-currency-exchange-rates/compare/v1.0.0...v1.0.1) (2026-04-08)
 
 
